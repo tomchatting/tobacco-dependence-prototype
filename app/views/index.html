@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Tobacco Dependency Treatment
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Tobacco Dependency Treatment
+      </h1>
+
+      <p class="nhsuk-lede-text">
+        This is a prototype to demonstrate the capture of a Tobacco Dependency Treatment form.
+      </p>
+
+      <hr>
+
+      <h2>
+        Requirements and information
+      </h2>
+
+      <p>This prototype form shouldn't take longer than 5 minutes to complete.</p>
+
+      <p>You should not input any real patient identifiable data into this prototype.</p>
+
+      <p>This prototype allows you to model the journey for:
+        <uL>
+          <li>an encounter with a form already completed (01/01/2024)</li>
+          <li>an encounter which has not had a form already completed (31/12/2023)</li>
+        </uL>
+      </p>
+
+      <hr>
+
+      <h2>
+        Todo
+      </h2>
+
+      <uL>
+        <li>
+          <del>Consider checks on MRN and confirming who the patient is</del>
+        </li>
+        <li>
+          <del>Add another way to manage patient, (repeats?) may need to consider admission date or similar</del> -- link to EPR?
+        </li>
+        <li>
+          <del>Need to manage ongoing records</del>
+        </li>
+      </uL>
+
+      <a class="nhsuk-button" href="/mrn">Start</a>
+
+    </div>
+  </div>
+{% endblock %}

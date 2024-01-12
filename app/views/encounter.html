@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Select existing admission, or create new admission record
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/encounter-start" method="post" class="form">
+      
+        {{ radios({
+          "idPrefix": "encounter",
+          "name": "encounter",
+          "fieldset": {
+            "legend": {
+              "text": "Which encounter start date are you completing this form for?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+            "text": "This is the date the patient was admitted to hospital."
+          },
+          "items": [
+            {
+              "value": "01/01/2024",
+              "text": "01/01/2024"
+            },
+            {
+              "value": "31/12/2023",
+              "text": "31/12/2023"
+            }
+          ]
+        }) }}
+
+        <button type="submit" class="nhsuk-button">Continue</button>
+      </form>
+      <div class="nhsuk-back-link">
+        <a href="/mrn" class="nhsuk-back-link__link">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Change my previous answer</a>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/clear-data",
+        "label": "Clear data"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}

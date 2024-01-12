@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  What is the patient's MRN?
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/confirm-mrn" method="post">
+        <fieldset class="nhsuk-fieldset">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-label--l" for="nhs-number">
+              What is the patient's MRN?
+            </label>
+            <input 
+              class="nhsuk-input nhsuk-input--width-10" 
+              inputmode="numeric" 
+              id="mrn" 
+              name="mrn" 
+              value="{{ data['mrn'] }}" 
+              type="number" 
+              required
+            >
+          </div>
+        </fieldset>
+        <button class="nhsuk-button">Continue</button>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/clear-data",
+        "label": "Clear data"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}

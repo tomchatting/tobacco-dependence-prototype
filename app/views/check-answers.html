@@ -1,0 +1,164 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1>
+        Check your answers
+      </h1>
+
+      <div class="nhsuk-hint">
+        Please check that the information below is correct before saving.
+      </div>
+
+      <dl class="nhsuk-summary-list">
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            MRN
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['mrn'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/mrn">
+              Change<span class="nhsuk-u-visually-hidden"> MRN</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Encounter start date
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['encounter'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/encounter">
+              Change<span class="nhsuk-u-visually-hidden"> encounter start</span>
+            </a>
+          </dd>        
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Smoker undertaking a current supported quit attempt
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['ongoing'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/undertaking-current-supported-quit-attempt">
+              Change<span class="nhsuk-u-visually-hidden"> smoker undertaking a current supported quit attempt</span>
+            </a>
+          </dd>        
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Tobacco dependence care plan
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['careplan'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/undertaking-current-supported-quit-attempt">
+              Change<span class="nhsuk-u-visually-hidden"> smoker undertaking a current supported quit attempt</span>
+            </a>
+          </dd>        
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Intended smoking quit date
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['intended-quit-date-day'] }}/{{ data['intended-quit-date-month'] }}/{{ data['intended-quit-date-year'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/intended-quit-date">
+              Change<span class="nhsuk-u-visually-hidden"> intended smoking quit date</span>
+            </a>
+          </dd>        
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Onward referral
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['referral'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/ongoing-support-referral">
+              Change<span class="nhsuk-u-visually-hidden"> onward referral</span>
+            </a>
+          </dd>        
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Has a 28-day follow-up been made, or attempted, with the patient?
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['28-days'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/outcome">
+              Change<span class="nhsuk-u-visually-hidden"> outcome</span>
+            </a>
+          </dd>        
+        </div>
+
+        {%- if data['28-days'] == 'Yes' -%}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Tobacco Care Plan Outcome at 28 Days
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data['outcome'] }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/outcome">
+              Change<span class="nhsuk-u-visually-hidden"> outcome</span>
+            </a>
+          </dd>        
+        </div>
+        {%- endif -%}
+        
+      </dl>
+
+      <a href="/confirmation" class="nhsuk-button">Accept and save</a>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/examples/passing-data/clear-data",
+        "label": "Clear data"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}

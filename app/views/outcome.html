@@ -1,0 +1,112 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Tobacco care plan outcome at 28 days
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/check-answers" method="post" class="form">
+        
+        {% set outcomeHtml %}
+          {{ radios({
+            "idPrefix": "outcome",
+            "name": "outcome",
+            "classes": "nhsuk-u-width-two-thirds",
+            "label": {
+              text: "Tobacco care plan outcome at 28 days"
+            },
+            "hint": {
+              "text": "For patients that received a Tobacco Dependence Service Care Plan, whether they had a self-reported or CO confirmed quit, at 28 days following the start of their agreed quit windows (i.e. the date of discharge from hospital for most inpatients)"
+            },
+            "items": [
+              {
+                "value": "CO confirmed quit - 1",
+                "text": "CO confirmed quit",
+                "checked": data['outcome'] and "CO confirmed quit - 1"
+              },
+              {
+                "value": "Self reported (only) quit - 2",
+                "text": "Self reported (only) quit",
+                "checked": data['outcome'] and "Self reported (only) quit - 2"
+              },
+              {
+                "value": "Confirmed current smoker (not quit) - 3",
+                "text": "Confirmed current smoker (not quit)",
+                "checked": data['outcome'] and "Confirmed current smoker (not quit) - 3"
+              },
+              {
+                "value": "Smoking status unknown or lost to follow up - 4",
+                "text": "Smoking status unknown or lost to follow up",
+                "checked": data['outcome'] and "Smoking status unknown or lost to follow up - 4"
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {{ radios({
+          "idPrefix": "28-days",
+          "name": "28-days",
+          "fieldset": {
+            "legend": {
+              "text": "Has a 28-day follow-up been made, or attempted, with the patient?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes",
+              "checked": data['referral'] and "Yes",
+              "conditional": {
+                "html": outcomeHtml
+              }
+            },
+            {
+              "value": "No",
+              "text": "No",
+              "checked": data['referral'] and "No"
+            }
+          ]
+        }) }}
+
+        <button type="submit" class="nhsuk-button">Continue</button>
+      </form>
+      <div class="nhsuk-back-link">
+        <a href="/ongoing-support-referral" class="nhsuk-back-link__link">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Change my previous answer</a>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/clear-data",
+        "label": "Clear data"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}

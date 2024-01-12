@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  The Tobacco Dependence Service care plan for the patient
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/intended-quit-date" method="post" class="form">
+
+          {{ radios({
+            "idPrefix": "careplan",
+            "name": "careplan",
+            "fieldset": {
+              "legend": {
+                "text": "The Tobacco Dependence Service care plan for the patient",
+                "classes": "nhsuk-fieldset__legend--l",
+                "isPageHeading": true
+              }
+            },
+            "items": [
+              {
+                "value": "VBA (very brief advice) only (refusal of opt-out offer of treatment) - 10",
+                "text": "VBA (very brief advice) only (refusal of opt-out offer of treatment)",
+                "checked": data['referral'] and "VBA (very brief advice) only (refusal of opt-out offer of treatment) - 10"
+              },
+              {
+                "value": "Smoking reduction (a supported attempt to reduce the number of cigarettes smoked, with or without the use of nicotine) - 20",
+                "text": "Smoking reduction (a supported attempt to reduce the number of cigarettes smoked, with or without the use of nicotine)",
+                "checked": data['referral'] and "Smoking reduction (a supported attempt to reduce the number of cigarettes smoked, with or without the use of nicotine) - 20"
+              },
+              {
+                "value": "Supported temporary abstinence (support to remain smokefree whilst in hospital, no follow-up care) - 30",
+                "text": "Supported temporary abstinence (support to remain smokefree whilst in hospital, no follow-up care)",
+                "checked": data['referral'] and "Supported temporary abstinence (support to remain smokefree whilst in hospital, no follow-up care) - 30"
+              },
+              {
+                "value": "Unsupported temporary abstinence - 40",
+                "text": "Unsupported temporary abstinence",
+                "checked": data['referral'] and "Unsupported temporary abstinence - 40"
+              },
+              {
+                "value": "Unsupported quit attempt without nicotine - 50",
+                "text": "Unsupported quit attempt without nicotine",
+                "checked": data['referral'] and "Unsupported quit attempt without nicotine - 50"
+              },
+              {
+                "value": "Unsupported quit attempt with nicotine - 60",
+                "text": "Unsupported quit attempt with nicotine",
+                "checked": data['referral'] and "Unsupported quit attempt with nicotine - 60"
+              },
+              {
+                "value": "Quit attempt with behavioural intervention and licensed medication - recommended NHS INTERVENTION - 70",
+                "text": "Quit attempt with behavioural intervention and licensed medication - recommended NHS INTERVENTION",
+                "checked": data['referral'] and "Quit attempt with behavioural intervention and licensed medication - recommended NHS INTERVENTION - 70"
+              },
+              {
+                "value": "Quit attempt with behavioural intervention and unlicensed nicotime containing products - 80",
+                "text": "Quit attempt with behavioural intervention and unlicensed nicotime containing products",
+                "checked": data['referral'] and "Quit attempt with behavioural intervention and unlicensed nicotime containing products - 80"
+              },
+              {
+                "value": "Quit attempt with behavioural intervention and unlicensed nicrotime containing products - 90",
+                "text": "Quit attempt with behavioural intervention and unlicensed nicrotime containing products",
+                "checked": data['referral'] and "Quit attempt with behavioural intervention and unlicensed nicrotime containing products - 90"
+              },
+              {
+                "value": "No care plan (VBA (very brief advice) or treatment) provided - unable to provide VBA due to medical or other condition - 97",
+                "text": "No care plan (VBA (very brief advice) or treatment) provided - unable to provide VBA due to medical or other No care plan (VBA (very brief advice) or treatment) provided - other",
+                "checked": data['referral'] and "No care plan (VBA (very brief advice) or treatment) provided - unable to provide VBA due to medical or other condition - 97"
+              },
+              {
+                "value": "No care plan (VBA (very brief advice) or treatment) provided - other - 98",
+                "text": "No care plan (VBA (very brief advice) or treatment) provided - other",
+                "checked": data['referral'] and "No care plan (VBA (very brief advice) or treatment) provided - other - 98"
+              }
+            ]
+          }) }}
+
+        <button type="submit" class="nhsuk-button">Continue</button>
+      </form>
+      <div class="nhsuk-back-link">
+        <a href="/undertaking-current-supported-quit-attempt" class="nhsuk-back-link__link">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Change my previous answer</a>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/clear-data",
+        "label": "Clear data"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}

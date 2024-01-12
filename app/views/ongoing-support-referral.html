@@ -1,0 +1,117 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Ongoing support referral
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/outcome" method="post" class="form">
+        
+
+        {{ radios({
+          "idPrefix": "referral",
+          "name": "referral",
+          "fieldset": {
+            "legend": {
+              "text": "Ongoing support referral",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "hint": {
+            "text": "If, and where, the patient had been referred for ongoing support for tobacco dependence"
+          },
+          "items": [
+            {
+              "value": "Local Authority commissioned Stop Smoking Service (including services provided by GPs etc) - 10",
+              "text": "Local Authority commissioned Stop Smoking Service (including services provided by GPs etc)",
+              "checked": data['referral'] and "Local Authority commissioned Stop Smoking Service (including services provided by GPs etc) - 10"
+            },
+            {
+              "value": "Secondary care - 20",
+              "text": "Secondary care",
+              "checked": data['referral'] and "Secondary care - 20"
+            },
+            {
+              "value": "NHS Community Mental Health Service - 25",
+              "text": "NHS Community Mental Health Service",
+              "checked": data['referral'] and "NHS Community Mental Health Service - 25"
+            },
+            {
+              "value": "NHS Community Pharmacy - 30",
+              "text": "NHS Community Pharmacy",
+              "checked": data['referral'] and "NHS Community Pharmacy - 30"
+            },
+            {
+              "value": "NHS Primary Care (including GPs, but not commissioned by the local authority) - 40",
+              "text": "NHS Primary Care (including GPs, but not commissioned by the local authority)",
+              "checked": data['referral'] and "NHS Primary Care (including GPs, but not commissioned by the local authority) - 40"
+            },
+            {
+              "value": "Third Sector (Excluding LA commissioned services) - 50",
+              "text": "Third Sector (Excluding LA commissioned services)",
+              "checked": data['referral'] and "Third Sector (Excluding LA commissioned services) - 50"
+            },
+            {
+              "value": "No onward support (patient choice) - 60",
+              "text": "No onward support (patient choice)",
+              "checked": data['referral'] and "No onward support (patient choice) - 60"
+            },
+            {
+              "value": "No onward support (unavailable) - 70",
+              "text": "No onward support (unavailable)",
+              "checked": data['referral'] and "No onward support (unavailable) - 70"
+            },
+            {
+              "value": "No onward support (not required, e.g. patient died) - 80",
+              "text": "No onward support (not required, e.g. patient died)",
+              "checked": data['referral'] and "No onward support (not required, e.g. patient died) - 80"
+            },
+            {
+              "value": "Care complete in house (no referral) - 90",
+              "text": "Care complete in house (no referral)",
+              "checked": data['referral'] and "Care complete in house (no referral) - 90"
+            }
+          ]
+        }) }}
+
+        <button type="submit" class="nhsuk-button">Continue</button>
+      </form>
+      <div class="nhsuk-back-link">
+        <a href="/intended-quit-date" class="nhsuk-back-link__link">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Change my previous answer</a>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/clear-data",
+        "label": "Clear data"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}

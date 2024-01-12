@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  About - Tobacco Dependency
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/docs",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>About</h1>
+
+      <p class="nhsuk-lede-text">This is a prototype for the Tobacco prevention programme PLD collection.</p>
+
+      <h2>Support</h2>
+
+      <p>This prototype was designed in-house at Bradford Teaching Hospitals, for support/feedback:</p>
+
+      <ul>
+        <li><a href="mailto:thomas.chatting@nhs.net?subject=Tobacco dependence prototype">email us</a></li>
+        <li><a href="https://bhts-biweb.bradfordhospitals.int:8508/" rel="nofollow">visit the Insights Centre</a></li>
+      </ul>
+
+      <h2>Privacy</h2>
+
+      <p>This is a prototype website and no user data is stored outside of your local machine. Local data is cleared once you close the browser or use the "Clear data" button at the bottom of any page within the prototype.</p>
+
+      <h2>This is not a production tool</h2>
+
+      <p>This prototype is designed to look and feel like a finished product, but it does not submit any data, nor does it contribute to any mandatory submissions.</p>
+
+    </div>
+
+  </div>
+{% endblock %}

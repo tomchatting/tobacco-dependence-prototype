@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Intended smoking quit date
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/ongoing-support-referral" method="post" class="form">
+        
+
+      {{ dateInput({
+        "id": "intended-quit-date",
+        "namePrefix": "intended-quit-date",
+        "fieldset": {
+          "legend": {
+            "text": "Intended smoking quit date",
+            "classes": "nhsuk-label--l",
+            "isPageHeading": true
+          }
+        },
+        "hint": {
+          "text": "The date set by a person on which they intend to stop smoking. For example, 15 3 2024"
+        },
+        "items": [
+          {
+            "name": "day",
+            "classes": "nhsuk-input--width-2",
+            "value": data['intended-quit-date-day'],
+            "required": "required"
+          },
+          {
+            "name": "month",
+            "classes": "nhsuk-input--width-2",
+            "value": data['intended-quit-date-month']
+          },
+          {
+            "name": "year",
+            "classes": "nhsuk-input--width-4",
+            "value": data['intended-quit-date-year']
+          }
+        ]
+      }) }}
+
+        <button type="submit" class="nhsuk-button">Continue</button>
+      </form>
+      <div class="nhsuk-back-link">
+        <a href="/tobacco-dependence-care-plan" class="nhsuk-back-link__link">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Change my previous answer</a>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/clear-data",
+        "label": "Clear data"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}
